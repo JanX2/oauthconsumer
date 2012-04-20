@@ -32,9 +32,11 @@
 #pragma mark init
 
 - (id)initWithKey:(const NSString *)aKey secret:(const NSString *)aSecret {
-	[super init];
-	self.key = [aKey retain];
-	self.secret = [aSecret retain];
+    if((self = [super init])) 
+    {
+        self.key = [[aKey copy] autorelease];
+        self.secret = [[aSecret copy] autorelease];
+    }
 	return self;
 }
 
