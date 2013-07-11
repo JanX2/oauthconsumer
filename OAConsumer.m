@@ -32,7 +32,7 @@
 #pragma mark init
 
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret {
-	if ((self = [super init])) {
+	if ((self = [super init]))
     {
 		self.key = aKey;
 		self.secret = aSecret;
