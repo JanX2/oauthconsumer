@@ -97,11 +97,9 @@ static u_int8_t workspace[64];
     state[3] += d;
     state[4] += e;
 	
-#ifndef __clang_analyzer__ // presumably these are being wiped for security purposes, even though they won't be used again, so suppress the warning about the value not being read
     /* Wipe variables */
     a = b = c = d = e = 0;	
-#endif
-
+    (void)a; (void)b; (void)c; (void)d; (void)e;
 }
 
 
@@ -162,9 +160,8 @@ u_int8_t finalcount[8];
          ((context->state[i>>2] >> ((3-(i & 3)) * 8) ) & 255);
     }
     /* Wipe variables */
-#ifndef __clang_analyzer__ // presumably these are being wiped for security purposes, even though they won't be used again, so suppress the warning about the value not being read
     i = j = 0;
-#endif
+    (void)i; (void)j;
     memset(context->buffer, 0, 64);
     memset(context->state, 0, 20);
     memset(context->count, 0, 8);
